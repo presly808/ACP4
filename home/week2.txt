@@ -1,0 +1,30 @@
+1. java.io.*;
+    InputStream, OutputStream
+    Reader, Reader
+
+    design patterns Decorator, Adapter
+
+        Set
+    HashSet, LinkedHasSet
+        Map
+    HashMap, LinkedHashMap
+
+    class Object(equals, hashCode)
+
+2. Finish tasks started in classroom
+
+3. Write own implementation of HasSet (Just implement interface Set and write all methods)
+
+4. Написать собственную реализацию класса Scanner, работающую с символьными потоками.
+   Создать два конструктора в один передается объект по ссылке Reader, во второй String.
+
+   Реализовать методы:
+
+      String next() - чтение одного слова в строке
+      int nextInt() - чтение целого числа из строки или InputMismatchException
+      String nextLine() - чтение всей строки
+      boolean hasNext() - определение наличия в потоке данных
+      boolean hasNextInt() - определение наличия в потоке целого int числа
+      useDelemiter(String) - использует разделитель
+      close() - закрытие сканнера, теперь нельзя использовать и NoSuchElementException
+
