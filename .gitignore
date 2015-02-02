@@ -5,6 +5,8 @@
 
 #IDEAFiles
 *.iml
+temp/
+
 
 # Package Files #
 *.jar

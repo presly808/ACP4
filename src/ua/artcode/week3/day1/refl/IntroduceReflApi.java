@@ -76,7 +76,7 @@ public class IntroduceReflApi {
 class Person {
 
     private int age;
-    public Integer num;
+    private Integer num;
     String name;
     double[] res;
 
