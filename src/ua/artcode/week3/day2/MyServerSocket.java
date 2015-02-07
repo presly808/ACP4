@@ -25,7 +25,7 @@ public class MyServerSocket {
                 PrintWriter pw = new PrintWriter(client.getOutputStream());
 
                 pw.printf("hello from server %s, your num %d, current date = %tc\n",
-                        serverSocket.getInetAddress()., count++, new Date());
+                        serverSocket.getInetAddress(), count++, new Date());
 
                 pw.flush();
                 pw.close();

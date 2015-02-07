@@ -1,6 +1,7 @@
 package ua.artcode.week3.day1.refl;
 
 import java.io.File;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -73,7 +74,10 @@ public class IntroduceReflApi {
 
 }
 
-class Person {
+class Person implements Serializable {
+
+
+    private static final long serialVersionUID = 1L;
 
     private int age;
     private Integer num;
