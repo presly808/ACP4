@@ -1,0 +1,20 @@
+1. Java standard Serialization
+    Threads in java(sleep, join)
+    discover classes (Thread, Runnable)
+    synchronizations blocks and methods (wait, notify, notifyAll)
+    ExecutorService (ThreadPool), interfaces Lock, Condition in package java.util.concurrent
+    class Properties
+
+    pattern Observer
+
+2. Find file in file system using threads for faster results
+       file paths which have been found, save into one file results.txt
+
+3. Implement asynchronous chat that allows communication with two and more users
+    Must have
+    - saving history of messages and save all non-standard situations
+    - read connections setting(port, max users size, list of banned users)
+        from server_settings.properties (see class Properties)
+    - send message using Serialization
+    - for better architecture of application see pattern Observer
+    - don't forget about Swing

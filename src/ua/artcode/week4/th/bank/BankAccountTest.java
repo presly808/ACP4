@@ -9,14 +9,13 @@ public class BankAccountTest {
         BankAccount account = new BankAccount("123456789", 0);
 
         for(int i = 0; i < 5; i++){
-            Thread thread = new Thread(new DepositThread(account, 1000));
-            thread.start();
+            Thread thread1 = new Thread(new DepositThread(account, 1000));
+            thread1.start();
+            Thread thread2 = new Thread(new WithdrawThread(account, 1000));
+            thread2.start();
         }
 
-        Thread.sleep(3000);
 
-
-        System.out.println(account.getCash());
     }
 }
 
@@ -39,12 +38,38 @@ class BankAccount {
     }
 
     public synchronized void deposit(int money){
+        System.out.println(Thread.currentThread().getName() + " begin synch deposit money " + cash);
+        while(cash != 0){
+            try {
+                System.out.println(Thread.currentThread().getName() + " go to sleep deposit money " + cash);
+                wait();//WAITING
+                System.out.println(Thread.currentThread().getName() + " awake deposit money " + cash);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         cash = cash + money;
+        System.out.println(Thread.currentThread().getName() + " end synch deposit money " + cash);
+        notifyAll();
     }
 
     public int withdraw(int money){
-        cash = cash - money;
-        return money;
+        System.out.println(Thread.currentThread().getName() + " begin withdraw deposit money " + cash);
+        synchronized (this){
+            while(cash == 0){
+                try {
+                    System.out.println(Thread.currentThread().getName() + " go to sleep withdraw deposit money " + cash);
+                    wait();
+                    System.out.println(Thread.currentThread().getName() + " awake withdraw deposit money " + cash);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            cash = cash - money;
+            System.out.println(Thread.currentThread().getName() + " end withdraw deposit money " + cash);
+            notifyAll();
+            return money;
+        }
     }
 }
 
@@ -65,4 +90,22 @@ class DepositThread implements Runnable {
         }
     }
 
+}
+
+class WithdrawThread implements Runnable {
+
+    private BankAccount account;
+    private int actionsCount;
+
+    public WithdrawThread(BankAccount account, int actionsCount) {
+        this.account = account;
+        this.actionsCount = actionsCount;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < actionsCount; i++) {
+            account.withdraw(1);
+        }
+    }
 }
