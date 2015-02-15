@@ -27,7 +27,8 @@ public class DomParseXml {
         Document document = documentBuilder.parse(new File("../ACP4/temp/week5/users.xml"));
 
         Element root = document.getDocumentElement(); // get root
-        DomParserUtils.showXML(root);
+        String res = DomParserUtils.getString(root);
+        System.out.println(res);
 
     }
 

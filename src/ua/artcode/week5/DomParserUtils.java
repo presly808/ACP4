@@ -8,9 +8,9 @@ import org.w3c.dom.*;
 public class DomParserUtils {
 
 
-    public static void showXML(Element element) {
+    public static String getString(Element element) {
 
-        System.out.printf("<%s%s>",
+        String res = String.format("<%s%s>",
                 element.getTagName(),
                 element.hasAttributes() ? formatAttr(element) : "");
 
@@ -18,13 +18,15 @@ public class DomParserUtils {
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node child = nodeList.item(i);
             if (child.getNodeType() == Node.ELEMENT_NODE) {
-                showXML((Element) child);
+                res += getString((Element) child);
             } else if (child.getNodeType() == Node.TEXT_NODE) {
-                System.out.print(child.getNodeValue());
+                res += child.getNodeValue();
             }
         }
 
-        System.out.printf("</%s>", element.getTagName());
+        res += String.format("</%s>", element.getTagName());
+
+        return res;
 
 
     }
