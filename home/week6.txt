@@ -1,0 +1,11 @@
+1. Relation Model (primary key, foreign key, joins)
+    SQL http://www.w3schools.com/sql/
+    Transactions in db, Data base Normalizations (1,2,3 forms)
+
+    JDBC (Connection, Statement, PrepareStatement, ResultSet)
+
+    Maven (plugins, goals, lifecycle, dependecies)
+
+2. Extends out project EShop, implements all interface method add add own.
+
+
