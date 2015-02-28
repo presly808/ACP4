@@ -1,12 +1,17 @@
 package ua.artcode.model;
 
-/**
- * Created by serhii on 22.02.15.
- */
+import javax.persistence.*;
+
+@Entity
+@Table(name = "clients")
 public class Client {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment
     private int id;
+    @Column(name = "name", length = 20)
     private String name;
+
     private String email;
     private String phone;
 
