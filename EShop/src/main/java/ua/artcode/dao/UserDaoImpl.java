@@ -1,5 +1,7 @@
 package ua.artcode.dao;
 
+import ua.artcode.exception.ApplicationException;
+import ua.artcode.exception.NoUserFoundException;
 import ua.artcode.model.Client;
 import ua.artcode.utils.ConnectionFactory;
 
@@ -39,12 +41,35 @@ public class UserDaoImpl implements UserDAO {
 
     @Override
     public Client findOne(int id) {
+
         return null;
     }
 
     @Override
-    public Client findOne(String login) {
-        return null;
+    public Client findOne(String login) throws ApplicationException {
+        Client client = null;
+        try (Connection connection = ConnectionFactory.getConnection();
+             Statement statement = connection.createStatement()){
+
+            String sql = String.format(
+                    "SELECT id,name,login,email,phone FROM clients WHERE login='%s'", login);
+
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs.next()){
+                client = new Client();
+                client.setId(rs.getInt("id"));
+                client.setName(rs.getString("name"));
+                client.setLogin(rs.getString("login"));
+                client.setEmail(rs.getString("email"));
+                client.setPhone(rs.getString("phone"));
+            } else {
+                throw new NoUserFoundException("user with login " + login + " not found");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return client;
     }
 
     @Override

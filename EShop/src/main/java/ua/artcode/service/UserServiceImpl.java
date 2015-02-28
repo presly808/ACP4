@@ -1,6 +1,7 @@
 package ua.artcode.service;
 
 import ua.artcode.dao.UserDAO;
+import ua.artcode.exception.ApplicationException;
 import ua.artcode.model.Client;
 
 /**
@@ -30,7 +31,7 @@ public class UserServiceImpl implements  UserService {
     }
 
     @Override
-    public Client getInfo(String login) {
-        return null;
+    public Client getInfo(String login) throws ApplicationException {
+        return userDAO.findOne(login);
     }
 }

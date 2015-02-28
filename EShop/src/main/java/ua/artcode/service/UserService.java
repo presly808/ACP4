@@ -1,5 +1,6 @@
 package ua.artcode.service;
 
+import ua.artcode.exception.ApplicationException;
 import ua.artcode.model.Client;
 
 /**
@@ -11,6 +12,6 @@ public interface UserService {
 
     String signIn(String login, String pass);
 
-    Client getInfo(String login);
+    Client getInfo(String login) throws ApplicationException;
 
 }
