@@ -7,6 +7,12 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <artifactId>ACP4</artifactId>
+        <groupId>ua.artcode</groupId>
+        <version>1.0</version>
+    </parent>
+
     <name>EShop</name>
     <url>http://maven.apache.org</url>
 

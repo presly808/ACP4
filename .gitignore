@@ -5,7 +5,9 @@
 
 #IDEAFiles
 *.iml
+.idea/
 temp/
+target/
 
 
 # Package Files #

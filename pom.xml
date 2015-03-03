@@ -9,6 +9,10 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <modules>
+        <module>EShop</module>
+    </modules>
+
     <dependencies>
 
         <dependency>
