@@ -7,7 +7,7 @@
     <groupId>ua.artcode</groupId>
     <artifactId>ACP4</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <modules>
         <module>EShop</module>
