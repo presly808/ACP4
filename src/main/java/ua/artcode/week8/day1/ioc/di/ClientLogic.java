@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class ClientLogic {
 
-    //@ForInject
+    @ForInject
     private IService service;
 
     public ClientLogic() {
