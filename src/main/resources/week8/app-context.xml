@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <context:annotation-config/>
+    <context:component-scan base-package="ua.artcode.week8.day2.spr.add"/>
+
+    <bean id="serviceA" class="ua.artcode.week8.day1.ioc.di.IServiceA" scope="singleton"/>
+
+    <bean id="clientLogic1" class="ua.artcode.week8.day1.ioc.di.ClientLogic">
+        <property name="service" ref="serviceA"/>
+        <property name="name" value="Some Desc"/>
+        <property name="count" value="34"/>
+    </bean>
+
+    <bean id="clientLogic2" class="ua.artcode.week8.day1.ioc.di.ClientLogic">
+        <constructor-arg name="count" value="66"/>
+        <constructor-arg name="name" value="const"/>
+        <constructor-arg name="service" ref="serviceA"/>
+    </bean>
+</beans>
