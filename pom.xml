@@ -15,6 +15,7 @@
 
     <modules>
         <module>EShop</module>
+        <module>SimpleWeb</module>
     </modules>
 
     <dependencies>
